@@ -1,5 +1,9 @@
 import React from 'react'
+import {Switch, Route} from 'react-router-dom'
+
 import Header from "./components/Header"
+import Cart from './pages/Cart'
+import Photos from './pages/Photos'
 import styled from 'styled-components'
 
 const GlobalWrapper = styled.section`
@@ -14,6 +18,20 @@ const GlobalWrapper = styled.section`
 
     font-family: 'Poppins', sans-serif;
     padding: 0;
+
+    a {
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: var(--light-blue)
+    }
+    
+    a:hover {
+        color: var(--black)
+    }
+    
+
 `
 const MainWrapper = styled.main`
 
@@ -28,7 +46,17 @@ function App() {
         <GlobalWrapper>
             <Header />
             <MainWrapper>
-                <h2>Home Page</h2>
+                <Switch>
+                    <Route exact path='/'>
+                        <Photos />
+                    </Route>
+                    <Route exact path='/'>
+                        <h2>Home Page</h2>
+                    </Route>
+                    <Route path='/cart'>
+                        <Cart />
+                    </Route>
+                </Switch>
             </MainWrapper>
         </GlobalWrapper>
     )
